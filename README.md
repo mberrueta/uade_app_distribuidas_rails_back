@@ -28,3 +28,22 @@ If you don't have a postgres db create a `docker-compose.yml` as example
 ```sh
 docker-compose up -d
 ```
+
+## Adding new CRUD'S
+
+```sh
+bin/rails generate model Movie title:string user_id:integer imdb_id:string
+rake db:migrate
+bin/rails generate scaffold_controller movie
+```
+
+- add `resources :movies` to config/routes.rb
+- set allowed & required params in controller `movie_params`
+- add some seed data in db/seeds.rb
+
+```sh
+rake db:seed
+rails s
+```
+
+open [localhost:3000](http://localhost:3000/movies)
