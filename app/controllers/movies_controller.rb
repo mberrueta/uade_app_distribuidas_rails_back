@@ -26,7 +26,7 @@ class MoviesController < ApplicationController
 
   # PATCH/PUT /movies/1
   def update
-    if @movie.update(movie_params)
+    if @movie.update(movie_update_params)
       render json: @movie
     else
       render json: @movie.errors, status: :unprocessable_entity
@@ -49,5 +49,9 @@ class MoviesController < ApplicationController
   def movie_params
     params.require(:title)
     params.permit(:title, :user_id, :imdb_id)
+  end
+
+  def movie_update_params
+    params.permit(:title)
   end
 end
